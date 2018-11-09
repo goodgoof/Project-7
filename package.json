@@ -5,9 +5,11 @@
   "dependencies": {
     "escape-string-regexp": "^1.0.5",
     "form-serialize": "^0.7.2",
+    "google-map-react": "^1.0.9",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-google-maps": "^9.4.5",
     "react-router-dom": "^4.1.1",
     "sort-by": "^1.2.0"
   },
