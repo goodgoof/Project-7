@@ -9,7 +9,7 @@ class App extends Component {
     this.state ={
       venues: [],
       markers: [],
-      defaultCenter:{lat: 41.0050977, lng: -73.7845768 },
+      // defaultCenter:{lat: 41.0050977, lng: -73.7845768 },
       center:[],
       zoom: 12
     };
@@ -29,7 +29,7 @@ class App extends Component {
     this.setState({markers:Object.assign(this.state.markers,marker)})
     const venue=this.state.venue.find(venue => venue.id ===marker.id);
 
-    SquareAPI.getVenueDetails(marker.id).then(res =>{
+    SquareAPI.getVenueDetails(marker.id).then(res => {
       const newVenue =Object.assign(venue, res.response.venue)
       this.setState({venues:Object.assign(this.state.venues,newVenue)})
       console.log(newVenue)

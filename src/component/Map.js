@@ -22,15 +22,15 @@ const MyMapComponent = withScriptjs(
         <Marker key={idx} position={{ lat: marker.lat, lng: marker.lng }} onClick ={() => props.handleMarkerClick(marker)}>
           {marker.isOpen && venueInfo.bestPhoto && (
             <InfoWindow>
-                <div>
+                <React.Fragment>
                   <img src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`} alt={"venue image"}/>
                  <p>{venueInfo.name}</p>
-                </div>
+                </React.Fragment>
             </InfoWindow>
           )}
         </Marker>
       )
-    )}
+  })  }
   </GoogleMap>
 ))
 )
@@ -42,7 +42,7 @@ class Map extends Component {
         {...this.props}
         googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBFLMyrvoPSmsicmg9MA8nc3OHE2-HIQbQ"
         loadingElement={<div style={{ height: `100%` }} />}
-        containerElement={<div style={{ height: `100%`,width:`75%` }} />}
+        containerElement={<div style={{ height: `400px` }} />}
         mapElement={<div style={{ height: `100%` }} />}
       />
 
