@@ -9,16 +9,26 @@ class App extends Component {
     this.state ={
       venues: [],
       markers: [],
+      defaultCenter:{lat: 41.0050977, lng: -73.7845768 },
       center:[],
       zoom: 12
     };
   }
+
+  handleMarkerClick =marker => {
+    marker.isOpen= true;
+    this.setState({markers:Object.assign(this.state.markers,marker)})
+  }
   componentDidMount(){
     SquareAPI.search({
-      near: "Scarsdale NY",
+      near: "Jersey City NJ",
       query: "tacos",
       limit: 10
-    }).then(results => {
+
+
+    })
+    .then(results => {
+      console.log(results)
       const {venues} = results.response;
       const {center} = results.response.geocode.feature.geometry;
       const markers = venues.map(venue => {
@@ -36,7 +46,7 @@ class App extends Component {
   render(){
     return (
       <div className ="App">
-        <Map {...this.state}/>
+        <Map {...this.state} handleMarkerClick={this.handleMarkerClick}/>
       </div>
     )
   }
