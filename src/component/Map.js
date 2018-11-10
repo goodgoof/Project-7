@@ -14,16 +14,23 @@ const MyMapComponent = withScriptjs(
     defaultCenter={{ lat: -34.397, lng: 150.644 }}
     center= {props.center}
   >
-    {props.markers && props.markers.filter(marker => marker.isVisible)
-      .map((marker,idx) => (
-      <Marker key={idx} position={{ lat: marker.lat, lng: marker.lng }} onClick ={() => props.handleMarkerClick(marker)}>
-          {marker.isOpen && (
+    {props.markers && props.markers.filter(marker => marker.isVisible).map((marker,idx) => {
+
+        const venueInfo = props.venues.find(venue => venue.id === marker.id);
+
+      return (
+        <Marker key={idx} position={{ lat: marker.lat, lng: marker.lng }} onClick ={() => props.handleMarkerClick(marker)}>
+          {marker.isOpen && venueInfo.bestPhoto && (
             <InfoWindow>
-              <p>Hello</p>
+                <div>
+                  <img src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`} alt={"venue image"}/>
+                 <p>{venueInfo.name}</p>
+                </div>
             </InfoWindow>
           )}
-      </Marker>
-    ))}
+        </Marker>
+      )
+    )}
   </GoogleMap>
 ))
 )
