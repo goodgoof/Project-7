@@ -15,10 +15,27 @@ class App extends Component {
     };
   }
 
+  closeAllMarkers =() => {
+    const markers =this.state.markers.map(marker => {
+      marker.isOpen=false;
+      return marker;
+    });
+    this.setState({markers: Object.assign(this.state.markers, markers)});
+  };
   handleMarkerClick =marker => {
+    this.closeAllMarkers();
+    console.log(marker)
     marker.isOpen= true;
     this.setState({markers:Object.assign(this.state.markers,marker)})
+    const venue=this.state.venue.find(venue => venue.id ===marker.id);
+
+    SquareAPI.getVenueDetails(marker.id).then(res =>{
+      const newVenue =Object.assign(res.response.venue, venue)
+      console.log(newVenue)
+    });
+
   }
+
   componentDidMount(){
     SquareAPI.search({
       near: "Jersey City NJ",
@@ -36,7 +53,8 @@ class App extends Component {
           lat:venue.location.lat,
           lng: venue.location.lng,
           isOpen:false,
-          isVisible: true
+          isVisible: true,
+          id: venue.id
         };
       });
       this.setState({venues, center, markers});
