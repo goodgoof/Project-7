@@ -1,3 +1,5 @@
+
+// global Google
 import React, { Component} from 'react';
 import { withScriptjs,
   withGoogleMap,
@@ -11,7 +13,7 @@ const MyMapComponent = withScriptjs(
   <GoogleMap
     defaultZoom={8}
     zoom={props.zoom}
-    defaultCenter={{ lat: -34.397, lng: 150.644 }}
+    // defaultCenter={{ lat: -34.397, lng: 150.644 }}
     center= {props.center}
   >
     {props.markers && props.markers.filter(marker => marker.isVisible).map((marker,idx) => {
@@ -19,13 +21,15 @@ const MyMapComponent = withScriptjs(
         const venueInfo = props.venues.find(venue => venue.id === marker.id);
 
       return (
-        <Marker key={idx} position={{ lat: marker.lat, lng: marker.lng }} onClick ={() => props.handleMarkerClick(marker)}>
+        <Marker key={idx} position={{ lat: marker.lat, lng: marker.lng }}
+        onClick ={() => props.handleMarkerClick(marker)}
+        animation={arr.length === 1 ? google.map.Animation.BOUNCE : google.maps.Animation.DROP}>
           {marker.isOpen && venueInfo.bestPhoto && (
             <InfoWindow>
-                <React.Fragment>
-                  <img src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`} alt={"venue image"}/>
+                <div>
+                  <img src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`} alt="Venue image" />
                  <p>{venueInfo.name}</p>
-                </React.Fragment>
+                </div>
             </InfoWindow>
           )}
         </Marker>
@@ -42,7 +46,7 @@ class Map extends Component {
         {...this.props}
         googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBFLMyrvoPSmsicmg9MA8nc3OHE2-HIQbQ"
         loadingElement={<div style={{ height: `100%` }} />}
-        containerElement={<div style={{ height: `400px` }} />}
+        containerElement={<div style={{ height: `100%`,width: `75%` }} />}
         mapElement={<div style={{ height: `100%` }} />}
       />
 

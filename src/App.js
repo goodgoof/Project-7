@@ -1,6 +1,8 @@
 import React, { Component} from 'react';
 import Map from "./component/Map.js"
 import SquareAPI from "./API/index.js"
+import  "./index.css"
+import SideBar from "./component/SideBar.js"
 
 class App extends Component {
 
@@ -11,7 +13,10 @@ class App extends Component {
       markers: [],
       // defaultCenter:{lat: 41.0050977, lng: -73.7845768 },
       center:[],
-      zoom: 12
+      zoom: 12,
+      updateSuperState: obj => {
+        this.setState(obj)
+      }
     };
   }
 
@@ -27,13 +32,19 @@ class App extends Component {
     console.log(marker)
     marker.isOpen= true;
     this.setState({markers:Object.assign(this.state.markers,marker)})
-    const venue=this.state.venue.find(venue => venue.id ===marker.id);
+    const venue=this.state.venues.find(venue => venue.id ===marker.id);
 
     SquareAPI.getVenueDetails(marker.id).then(res => {
       const newVenue =Object.assign(venue, res.response.venue)
       this.setState({venues:Object.assign(this.state.venues,newVenue)})
       console.log(newVenue)
     });
+
+  }
+
+  handleListItemClick =venue => {
+    const marker=this.state.markers.find(marker => marker.id === venue.id);
+    this.handleMarkerClick(marker)
 
   }
 
@@ -65,6 +76,7 @@ class App extends Component {
   render(){
     return (
       <div className ="App">
+        <SideBar {...this.state} handleListItemClick={this.handleListItemClick}/>
         <Map {...this.state} handleMarkerClick={this.handleMarkerClick}/>
       </div>
     )
