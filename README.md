@@ -18,4 +18,4 @@ If you feel that the app can be made better or more creative, please submit pull
 
 ## Resources
 
-For successful completion of this project I referred to React documentation, Forrest Walker's and Doug Brown's walkthroughs. Besides the walkthroughs I got lot of help from the slack community in fixing bugs. A huge shout out to all those who helped me @Jacolby @Sachin @DrunkenKismet @jamesDbartlett @Juan N besides lot of others who helped all along the way during this incredible journey. Thanks a lot to Brenda and Kelsey for constantly pushing me and encouraging me. Thanks for the study jams and forever helpful Brenda.
+For successful completion of this project I referred to React documentation, Forrest Walker's and Doug Brown's walkthroughs. Besides the walkthroughs I got lot of help from the slack community in fixing bugs. A huge shout out to all those who helped me @Jacolby @Sachin @DrunkenKismet @jamesDbartlett @Juan N besides lot of others who helped all along the way during this incredible journey. Thanks a lot to Brenda and Kelsey for constantly pushing me and encouraging me. Thanks for the study jams and all that Udacity has offered.
