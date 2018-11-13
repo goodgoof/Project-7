@@ -5,7 +5,8 @@ import { withScriptjs,
   withGoogleMap,
   GoogleMap,
   Marker,
-  InfoWindow}
+  InfoWindow,
+}
   from "react-google-maps";
 
 const MyMapComponent = withScriptjs(
@@ -23,7 +24,9 @@ const MyMapComponent = withScriptjs(
       return (
         <Marker key={idx} position={{ lat: marker.lat, lng: marker.lng }}
         onClick ={() => props.handleMarkerClick(marker)}
-        animation={arr.length === 1 ? google.map.Animation.BOUNCE : google.maps.Animation.DROP}>
+        // animation={array.props.length === 1 ? google.map.Animation.BOUNCE : google.maps.Animation.DROP}
+        >
+
           {marker.isOpen && venueInfo.bestPhoto && (
             <InfoWindow>
                 <div>

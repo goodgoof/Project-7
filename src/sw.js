@@ -3,13 +3,12 @@ console.log('Service Worker: Registered');
 const cacheFiles = [
   '/',
   '/index.html',
-  '/restaurant.html',
-  '/css/styles.css',
-  '/js/dbhelper.js',
-  '/js/main.js',
-  '/js/restaurant_info.js',
-  '/data/restaurants.json',
-  
+  '/component/map.js',
+  '/index.css',
+  '/component/VenueList.js',
+  '/app.js',
+  '/component/VenueList.js.js',
+  /component/ListItem.js'
 
 ];
 
