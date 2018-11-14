@@ -8,12 +8,8 @@ const cacheFiles = [
   '/component/VenueList.js',
   '/app.js',
   '/component/VenueList.js.js',
-  /component/ListItem.js'
-
+  '/component/ListItem.js'
 ];
-
-
-
 self.addEventListener('install', function(e){
   e.waitUntil(
     caches.open('v1').then(function(cache){
@@ -21,7 +17,6 @@ self.addEventListener('install', function(e){
     })
   );
 })
-
 self.addEventListener('fetch', function(e) {
   e.respondWith(
     caches.match(e.request).then(function(response){

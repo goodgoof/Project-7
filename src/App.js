@@ -3,6 +3,7 @@ import Map from "./component/Map.js"
 import SquareAPI from "./API/index.js"
 import  "./index.css"
 import SideBar from "./component/SideBar.js"
+import {slide as Venue} from "react-burger-menu";
 
 class App extends Component {
 
@@ -16,9 +17,14 @@ class App extends Component {
       zoom: 12,
       updateSuperState: obj => {
         this.setState(obj)
-      }
+      },
+      showMenu: true
     };
   }
+
+  toggleMenu() {
+    this.state.showMenu = !this.state.showMenu //Flips true/false
+}
 
   closeAllMarkers =() => {
     const markers =this.state.markers.map(marker => {
@@ -71,13 +77,16 @@ class App extends Component {
       });
       this.setState({venues, center, markers});
 
-    });
+    })
+    .catch(error => alert("Sorry, the page could not load"));
   }
+
+
   render(){
     return (
       <div className ="App">
-        <SideBar {...this.state} handleListItemClick={this.handleListItemClick}/>
-        <Map {...this.state} handleMarkerClick={this.handleMarkerClick}/>
+        <SideBar {...this.state} handleListItemClick={this.handleListItemClick} onClick={this.state.venueOpen} toggleFunction={this.togglemenu}/>
+        <Map {...this.state} handleMarkerClick={this.handleMarkerClick} role={"google map"}/>
       </div>
     )
   }

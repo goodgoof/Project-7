@@ -60,4 +60,22 @@ li.listitem {
     width: 100%;
   }
 
+  input#search {
+    width: 100%;
+    background: grey;
+  }
+
+  input[type="search"] {
+    height: 50px;
+    background: #dcdcd4;
+    width: 100%;
+    text-align: center;
+  }
+
+  ol.venuelist {
+    display: flex;
+    flex-direction: column;
+    margin-right: 45px;
+  }
+
 }

@@ -4,7 +4,7 @@ This repo is a code-along with the first project in the [React Nanodegree progra
 
 Most of the commits in this repository correspond to videos in the program.
 
-## Project Setup
+## Running project in production mode for service worker to cache.
 
 1. Clone the Project - `git clone git@github.com:goodgoof/neighborhood_map.git`
 2. Go into the directory where the project now lives - `cd neighborhood_map`

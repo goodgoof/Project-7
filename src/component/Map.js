@@ -30,7 +30,7 @@ const MyMapComponent = withScriptjs(
           {marker.isOpen && venueInfo.bestPhoto && (
             <InfoWindow>
                 <div>
-                  <img src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`} alt="Venue image" />
+                  <img src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`} alt={"venue image"} />
                  <p>{venueInfo.name}</p>
                 </div>
             </InfoWindow>
@@ -49,8 +49,9 @@ class Map extends Component {
         {...this.props}
         googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBFLMyrvoPSmsicmg9MA8nc3OHE2-HIQbQ"
         loadingElement={<div style={{ height: `100%` }} />}
-        containerElement={<div style={{ height: `100%`,width: `75%` }} />}
+        containerElement={<div style={{ height: `100%`,width: `75%` }} role={"application"} aria-label={"map"} />}
         mapElement={<div style={{ height: `100%` }} />}
+        role={"Google map"}
       />
 
     )

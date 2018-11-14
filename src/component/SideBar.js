@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
-import VenueList from "./VenueList.js"
+import VenueList from "./VenueList.js";
+import {slide as Venue} from "react-burger-menu";
 
 export default class SideBar extends Component {
   constructor() {
     super();
     this.state ={
       query: "",
-      venues: []
+      venues: [],
+      isToggle: true
     };
   }
   handleFilterVenues=() => {
@@ -19,8 +21,19 @@ export default class SideBar extends Component {
     return this.props.venues;
 
   }
+
+    toggleVenueList(){
+      this.setState({
+        isToggle: true
+    })
+  }
+  //   this.setState({isToggle: !this.state.isToggle})
+  // }
+
   handleChange = e => {
-    this.setState({query: e.target.value})
+    this.setState({query: e.target.value});
+
+
 
     const markers = this.props.venues.map(venue => {
       const isWatched = venue.name.toLowerCase().includes(e.target.value.toLowerCase());
@@ -37,7 +50,7 @@ export default class SideBar extends Component {
   render (){
     return (
       <div className='sidebar'>
-      <input type={"search"} is ={'search'} placeholder={"filter venues"}
+        <input type={"search"} is ={'search'} placeholder={"filter venues"} role={"Search box"}
       onChange ={this.handleChange}
       />
         <VenueList {...this.props}
