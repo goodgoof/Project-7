@@ -4,6 +4,7 @@ import SquareAPI from "./API/index.js"
 import  "./index.css"
 import SideBar from "./component/SideBar.js"
 import {slide as Venue} from "react-burger-menu";
+import BurgerMenu from "./component/BurgerMenu.js"
 
 class App extends Component {
 
@@ -12,19 +13,19 @@ class App extends Component {
     this.state ={
       venues: [],
       markers: [],
-      // defaultCenter:{lat: 41.0050977, lng: -73.7845768 },
+      defaultCenter:{lat: 41.0050977, lng: -73.7845768 },
       center:[],
       zoom: 12,
       updateSuperState: obj => {
         this.setState(obj)
       },
-      showMenu: true
+      // showMenu: true
     };
   }
 
-  toggleMenu() {
-    this.state.showMenu = !this.state.showMenu //Flips true/false
-}
+//   toggleMenu() {
+//     this.state.showMenu = !this.state.showMenu //Flips true/false
+// }
 
   closeAllMarkers =() => {
     const markers =this.state.markers.map(marker => {
@@ -84,9 +85,10 @@ class App extends Component {
 
   render(){
     return (
-      <div className ="App">
-        <SideBar {...this.state} handleListItemClick={this.handleListItemClick} onClick={this.state.venueOpen} toggleFunction={this.togglemenu}/>
-        <Map {...this.state} handleMarkerClick={this.handleMarkerClick} role={"google map"}/>
+      <div className ="App flex-container">
+        <SideBar className="item-1" {...this.state} handleListItemClick={this.handleListItemClick}  />
+        <BurgerMenu  onClick={this.props.toggleOpen}/>
+        <Map className="item-2" {...this.state} handleMarkerClick={this.handleMarkerClick} role={"google map"}/>
       </div>
     )
   }

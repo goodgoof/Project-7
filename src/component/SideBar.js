@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import VenueList from "./VenueList.js";
 import {slide as Venue} from "react-burger-menu";
-
+// import MeterialUI from "@material-ui/core";
 export default class SideBar extends Component {
   constructor() {
     super();
     this.state ={
       query: "",
       venues: [],
-      isToggle: true
+      // isToggle: true
     };
   }
   handleFilterVenues=() => {
@@ -22,11 +22,11 @@ export default class SideBar extends Component {
 
   }
 
-    toggleVenueList(){
-      this.setState({
-        isToggle: true
-    })
-  }
+  //   toggleVenueList(){
+  //     this.setState({
+  //       isToggle: true
+  //   })
+  // }
   //   this.setState({isToggle: !this.state.isToggle})
   // }
 

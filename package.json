@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.5.1",
     "escape-string-regexp": "^1.0.5",
     "form-serialize": "^0.7.2",
     "google-map-react": "^1.0.9",

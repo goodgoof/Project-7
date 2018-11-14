@@ -52,6 +52,35 @@ li.listitem {
   color:  white;
 }
 
+.flex-container {
+  display: flex;
+  width: 100%;
+}
+.item-1 {
+  width: 20%;
+  order: 2
+}
+.item-2 {
+  width: 80%;
+  order: 1;
+}
+
+ul.menu {
+  display: none;
+}
+
+/* @media screen and (max-width: 550px) {
+ .flex-container {
+   flex-direction:column;
+ }
+ .item-1 {
+   order: 1;
+ }
+ .item-2 {
+   order: 2;
+ } */
+/* } */
+
 @media only screen and (max-width: 425px) {
   .App {
     display: flex;
@@ -61,8 +90,9 @@ li.listitem {
   }
 
   input#search {
-    width: 100%;
+    width: 75%;
     background: grey;
+    float: right;
   }
 
   input[type="search"] {
@@ -77,5 +107,119 @@ li.listitem {
     flex-direction: column;
     margin-right: 45px;
   }
+  ol.venuelist {
+    display: none;
+  }
+
+
+
+/* hamburger icon */
+
+  .toggle-button {
+    position: absolute;
+    width: 20px;
+    height: 40px;
+    padding: 4px;
+    transition: .25s;
+    z-index: 100;
+  }
+
+  .toggle-button .menu-bar {
+    position: absolute;
+    border-radius: 2px;
+    width: 80%;
+    transition: .5s;
+  }
+
+  .toggle-button .bar-top {
+    border: 4px solid #000;
+    border-bottom: none;
+    top: 0;
+  }
+
+  .toggle-button .bar-middle {
+    border: 4px solid #000;
+    border-bottom: none;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    top: 4px;
+  }
+
+  .toggle-button .bar-bottom {
+    border: 4px solid #000;
+    border-top: none;
+    top: 22px;
+  }
+
+  .open .bar-top {
+    transform: rotate(45deg) translate(8px, 8px);
+    transition: .5s;
+    border-color: #fff;
+  }
+
+  .open .bar-middle {
+    transition: .3s ease-in;
+    opacity: 0;
+  }
+
+  .open .bar-bottom {
+    transform: rotate(-45deg) translate(8px, -7px);
+    transition: .5s;
+    border-color: #fff;
+  }
+
+  .open .toggle-button {
+    transform: translateX(270px);
+  }
+  /* END TOGGLE BUTTON */
+
+  /* MENU */
+  .menu-wrap {
+      background-color: #2366BB;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 280px;
+      margin-left: -280px;
+      font-size: 1em;
+      font-weight: 700;
+      overflow: auto;
+      transition: .25s;
+      z-index: 10;
+  }
+
+  .menu-open {
+      margin-left: 0;
+      box-shadow: 4px 1px 25px 1px #B9ADAD;
+  }
+
+  .menu {
+      position: relative;
+      top: 50px;
+      margin: 0;
+      padding: 10px;
+      font-family: verdana ,sans-serif;
+  }
+
+  a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2em;
+    display: block;
+    -webkit-transition: background 0.5s ease;
+    transition: background 0.5s ease;
+  }
+
+  ul li a:active {
+    background: #287CE7;
+  }
+
+  i {
+    position: relative;
+    top: 4px;
+    padding-right: 15px;
+  }
 
 }
+/* END MENU */

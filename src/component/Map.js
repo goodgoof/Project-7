@@ -14,8 +14,10 @@ const MyMapComponent = withScriptjs(
   <GoogleMap
     defaultZoom={8}
     zoom={props.zoom}
-    // defaultCenter={{ lat: -34.397, lng: 150.644 }}
+    defaultCenter={{ lat: -34.397, lng: 150.644 }}
     center= {props.center}
+    setCenter={ {lat: -34, lng: 151}}
+    Marker={{position: {lat: -34, lng: 151}}}
   >
     {props.markers && props.markers.filter(marker => marker.isVisible).map((marker,idx) => {
 
