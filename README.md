@@ -1,8 +1,6 @@
 # Neighborhood Map project
 
-This repo is a code-along with the first project in the [React Nanodegree program](https://www.udacity.com/course/react-nanodegree--nd019).
-
-Most of the commits in this repository correspond to videos in the program.
+Welcome to the neighborhood map created usinf React library, google maps API and tons of effort :)
 
 ## Running project in production mode for service worker to cache.
 
