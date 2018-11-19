@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import { slide as Menu } from 'react-burger-menu'
+import App from "./src/App.js";
 
 export default class BurgerMenu extends React.Component {
-
+  state ={
+    showMenu: true
+  }
   toggleOpen =() => {
     let toggleButton =document.getElementById('toggle-button').classList
     let menu =document.getElementById('menu-wrap').classList
@@ -16,9 +19,11 @@ export default class BurgerMenu extends React.Component {
   }
 
   render () {
+    let switch = this.state.showMenu ? "block" : "hidden";
+
     return (
       <div>
-        <button id="toggle-button" className="toggle-wrapper" onClick={this.props.toggleOpen}>
+        <button id="toggle-button" className="toggle-wrapper" onClick={this.toggleOpen}>
            <span className="toggle-button">
              <div className="menu-bar bar-top"></div>
              <div className="menu-bar bar-middle"></div>
@@ -26,14 +31,14 @@ export default class BurgerMenu extends React.Component {
           </span>
         </button>
 
-        <div className="menu-wrap">
+        <div className="menu-wrap" style={display: switch}>
             <div className="menu-sidebar">
                 <ul className="menu">
-                  <li><a href="#"><i className="material-icons">account_circle</i>Los Tacos</a></li>
-                    <li><a href="#"><i className="material-icons">add_shopping_cart</i>Rocco's Tacos</a></li>
-                    <li><a href="#"><i className="material-icons">assignment</i>Tacos El Bronco</a></li>
-                    <li><a href="#"><i className="material-icons">favorite_border</i>Otto's Tacos </a></li>
-                    <li><a href="#"><i className="material-icons">settings</i>Times Square Tacos</a></li>
+                  <li><a href="#">Los Tacos</a></li>
+                    <li><a href="#">Rocco's Tacos</a></li>
+                    <li><a href="#">Tacos El Bronco</a></li>
+                    <li><a href="#">Otto's Tacos </a></li>
+                    <li><a href="#">Times Square Tacos</a></li>
                 </ul>
             </div>
         </div>

@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.8",
+    "@fortawesome/react-fontawesome": "^0.1.3",
     "@material-ui/core": "^3.5.1",
     "escape-string-regexp": "^1.0.5",
     "form-serialize": "^0.7.2",
     "google-map-react": "^1.0.9",
+    "google-maps-react": "^2.0.2",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-burger-menu": "^2.5.4",

@@ -1,97 +1,75 @@
-import React, { Component} from 'react';
-import Map from "./component/Map.js"
-import SquareAPI from "./API/index.js"
-import  "./index.css"
-import SideBar from "./component/SideBar.js"
-import {slide as Venue} from "react-burger-menu";
-import BurgerMenu from "./component/BurgerMenu.js"
+import React, { Component } from 'react';
+import { Map, GoogleApiWrapper, InfoWindow, Marker} from 'google-maps-react';
+import  locations from './data/places.json';
 
-class App extends Component {
+const mapStyles = {
+  width: '100%',
+  height: '100%'
+};
 
-  constructor(){
-    super();
-    this.state ={
-      venues: [],
-      markers: [],
-      defaultCenter:{lat: 41.0050977, lng: -73.7845768 },
-      center:[],
-      zoom: 12,
-      updateSuperState: obj => {
-        this.setState(obj)
-      },
-      // showMenu: true
-    };
+export class MapContainer extends Component {
+  state ={
+    map: null,
+    markers: [],
+    showInfoWindow: false, // toggles between hide and show
+    activeMarker: {}, //shows active marker on click
+    selectedPlace: {}
   }
 
-//   toggleMenu() {
-//     this.state.showMenu = !this.state.showMenu //Flips true/false
-// }
-
-  closeAllMarkers =() => {
-    const markers =this.state.markers.map(marker => {
-      marker.isOpen=false;
-      return marker;
-    });
-    this.setState({markers: Object.assign(this.state.markers, markers)});
-  };
-  handleMarkerClick =marker => {
-    this.closeAllMarkers();
-    console.log(marker)
-    marker.isOpen= true;
-    this.setState({markers:Object.assign(this.state.markers,marker)})
-    const venue=this.state.venues.find(venue => venue.id ===marker.id);
-
-    SquareAPI.getVenueDetails(marker.id).then(res => {
-      const newVenue =Object.assign(venue, res.response.venue)
-      this.setState({venues:Object.assign(this.state.venues,newVenue)})
-      console.log(newVenue)
+  onMarkerClick =(props,marker,e) =>
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
     });
 
-  }
+    onClose = props =>{
+      if(this.state.showingInfoWindow) {
+        this.setState({
+          showingInfoWindow: false,
+          activeMarker: null
+        });
+      }
+    }
 
-  handleListItemClick =venue => {
-    const marker=this.state.markers.find(marker => marker.id === venue.id);
-    this.handleMarkerClick(marker)
-
-  }
-
-  componentDidMount(){
-    SquareAPI.search({
-      near: "Jersey City NJ",
-      query: "tacos",
-      limit: 10
-
-
-    })
-    .then(results => {
-      console.log(results)
-      const {venues} = results.response;
-      const {center} = results.response.geocode.feature.geometry;
-      const markers = venues.map(venue => {
-        return {
-          lat:venue.location.lat,
-          lng: venue.location.lng,
-          isOpen:false,
-          isVisible: true,
-          id: venue.id
-        };
-      });
-      this.setState({venues, center, markers});
-
-    })
-    .catch(error => alert("Sorry, the page could not load"));
-  }
-
-
-  render(){
+  render() {
     return (
-      <div className ="App flex-container">
-        <SideBar className="item-1" {...this.state} handleListItemClick={this.handleListItemClick}  />
-        <BurgerMenu  onClick={this.props.toggleOpen}/>
-        <Map className="item-2" {...this.state} handleMarkerClick={this.handleMarkerClick} role={"google map"}/>
+      <div>
+        <header>
+          <h1> Hiking Trails,Scarsdale NY </h1>
+        </header>
+
+        <Map
+          google={this.props.google}
+          zoom={12}
+          style={mapStyles}
+          initialCenter={{
+            lat: 40.9757,
+            lng: -73.7546
+          }}
+        >
+          <Marker
+            onClick={this.onMarkerClick}
+            name={'Weinberg Nature Center'}
+            lat={ 40.9757}
+            lng={ -73.7546}
+            />
+
+          <InfoWindow
+              marker= {this.state.activeMarker}
+              visible= {this.state.showingInfoWindow}
+              onClose= {this.state.onClose}
+          >
+            <div>
+              <h4> {this.state.selectedPlace.name}</h4>
+            </div>
+          </InfoWindow>
+          </Map>
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default GoogleApiWrapper({
+  apiKey: 'AIzaSyBFLMyrvoPSmsicmg9MA8nc3OHE2-HIQbQ'
+})(MapContainer);

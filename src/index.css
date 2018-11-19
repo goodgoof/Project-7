@@ -111,11 +111,11 @@ ul.menu {
     display: none;
   }
 
-
+}
 
 /* hamburger icon */
 
-  .toggle-button {
+   .toggle-button {
     position: absolute;
     width: 20px;
     height: 40px;
@@ -174,7 +174,7 @@ ul.menu {
   /* END TOGGLE BUTTON */
 
   /* MENU */
-  .menu-wrap {
+ .menu-wrap {
       background-color: #2366BB;
       position: fixed;
       top: 0;
@@ -189,7 +189,7 @@ ul.menu {
       z-index: 10;
   }
 
-  .menu-open {
+   .menu-open {
       margin-left: 0;
       box-shadow: 4px 1px 25px 1px #B9ADAD;
   }
@@ -202,7 +202,7 @@ ul.menu {
       font-family: verdana ,sans-serif;
   }
 
-  a {
+   a {
     text-decoration: none;
     color: #fff;
     font-size: 1.2em;
@@ -220,6 +220,3 @@ ul.menu {
     top: 4px;
     padding-right: 15px;
   }
-
-}
-/* END MENU */
