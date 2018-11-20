@@ -1,75 +1,27 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, InfoWindow, Marker} from 'google-maps-react';
-import  locations from './data/places.json';
+import MapContainer from './component/Map.js'
+import  locations from './data/locations.json';
+import ParkList from './component/ParkList.js'
 
-const mapStyles = {
-  width: '100%',
-  height: '100%'
-};
 
-export class MapContainer extends Component {
+class App extends Component {
   state ={
-    map: null,
-    markers: [],
-    showInfoWindow: false, // toggles between hide and show
-    activeMarker: {}, //shows active marker on click
-    selectedPlace: {}
+    parks: [],
+    // markers:[],
+    initialCenter: {lat: 41.0050977, lng: -73.7845768 },
+    zoom: 12,
+    all:locations
   }
-
-  onMarkerClick =(props,marker,e) =>
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
-    });
-
-    onClose = props =>{
-      if(this.state.showingInfoWindow) {
-        this.setState({
-          showingInfoWindow: false,
-          activeMarker: null
-        });
-      }
-    }
 
   render() {
-    return (
+    return(
       <div>
-        <header>
-          <h1> Hiking Trails,Scarsdale NY </h1>
-        </header>
-
-        <Map
-          google={this.props.google}
-          zoom={12}
-          style={mapStyles}
-          initialCenter={{
-            lat: 40.9757,
-            lng: -73.7546
-          }}
-        >
-          <Marker
-            onClick={this.onMarkerClick}
-            name={'Weinberg Nature Center'}
-            lat={ 40.9757}
-            lng={ -73.7546}
-            />
-
-          <InfoWindow
-              marker= {this.state.activeMarker}
-              visible= {this.state.showingInfoWindow}
-              onClose= {this.state.onClose}
-          >
-            <div>
-              <h4> {this.state.selectedPlace.name}</h4>
-            </div>
-          </InfoWindow>
-          </Map>
+        <MapContainer locations={this.state.all}/>
+        <ParkList />
       </div>
-    );
+    )
   }
+
 }
 
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyBFLMyrvoPSmsicmg9MA8nc3OHE2-HIQbQ'
-})(MapContainer);
+export default App;
