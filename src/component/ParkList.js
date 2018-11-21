@@ -7,14 +7,14 @@ import  locations from '../data/locations.json';
     return (
       <ol className="parks">
         {props.locations.map((location, key) =>(
-          <li key ={location.name} className="location-list-item">
+          <li key ={location.name} className="location-list-item" tabindex="0">
             <div className="location-details">
               <p>{location.name}</p>
               <p>{location.url}</p>
             </div>
           </li>
-        ))}
-      </ol>
+         ))}
+       </ol>
     )
 
 }

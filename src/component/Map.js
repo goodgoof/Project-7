@@ -3,12 +3,14 @@ import { Map, GoogleApiWrapper, InfoWindow, Marker} from 'google-maps-react';
 import  locations from '../data/locations.json';
 import ParkList from './ParkList.js'
 // import {Icons} from '@material-ui/icons'
+import "../App.css";
 
 
 
 const mapStyles = {
-  width: '100%',
-  height: '100%'
+  height: '100%',
+  width: '75%',
+  right: 0
 };
 
 export class MapContainer extends Component {
@@ -31,12 +33,13 @@ export class MapContainer extends Component {
     this.state.markers.map(marker=> marker.setMap(null))
   }
 
-  onMarkerClick =(props,marker,e) =>
+  onMarkerClick =(props,marker,e) =>{
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
     });
+  }
 
     onClose = props =>{
       if(this.state.showingInfoWindow) {
@@ -46,7 +49,7 @@ export class MapContainer extends Component {
         });
       }
     }
-    // // const markerProps=[]
+    // let markerProps=[]
     // let markers = locations.map(location, key) => {
     //   let mProps ={
     //     key: key,
@@ -74,15 +77,14 @@ export class MapContainer extends Component {
     //
     //   return marker;
     // }
-    //
+
 
 
   render() {
     return (
       <div>
         <header>
-          <h1> Hiking Trails,Scarsdale NY </h1></header>
-          <input type={"search"} is ={'search'} aria-label={"Search parks"} placeholder={"search"} />
+          <h1 className="title"> Parks and Hiking Trails, Scarsdale NY </h1></header>
 
         <Map
           google={this.props.google}
@@ -93,6 +95,9 @@ export class MapContainer extends Component {
             lng: -73.7546
           }}
           icon= 'pin.png'
+          className="mapBox"
+          role ="application"
+          aria-role="map"
         >
           <Marker
             onClick={this.onMarkerClick}
