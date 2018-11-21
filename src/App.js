@@ -17,7 +17,11 @@ class App extends Component {
   render() {
     return(
       <div>
-        <MapContainer locations={this.state.all}/>
+        <MapContainer
+            locations={this.state.all}
+            lat={this.state.initialCenter.lat}
+            lng={this.state.initialCenter.lng}
+            zoom={this.state.zoom}/>
 
       </div>
     )

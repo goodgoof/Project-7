@@ -9,7 +9,7 @@ import "../App.css";
 
 const mapStyles = {
   height: '100%',
-  width: '75%',
+  width: '100%',
   right: 0
 };
 
@@ -20,7 +20,7 @@ export class MapContainer extends Component {
     markerProps:[],
     showInfoWindow: false, // toggles between hide and show
     activeMarker: null, //shows active marker on click
-    selectedPlace: null,
+    selectedPlace: null, //activemarkerprops
     all: locations
   }
 
@@ -33,7 +33,7 @@ export class MapContainer extends Component {
     if(!locations)
      return;
      //remove markers present
-    this.state.markers.map(marker=> marker.setMap(null))
+    this.state.markers.forEach(marker=> marker.setMap(null))
   }
 
   onMarkerClick =(props,marker,e) =>{
@@ -55,9 +55,9 @@ export class MapContainer extends Component {
         });
       }
 
-    let selectedPlace=[];
+    let markerProps=[];
       let markers = locations.map((location, index) => {
-        let sPlace ={
+        let mProps ={
           key: index,
           index,
           name:location.name,
@@ -65,11 +65,11 @@ export class MapContainer extends Component {
           url: location.url
         };
 
-        selectedPlace.push(sPlace);
+        markerProps.push(mProps);
 
         let marker = new this.props.google.maps.Marker({
           position: location.pos,
-          map:this.setState.map,
+          map:this.state.map,
           animation: this.props.google.maps.Animation.DROP
         });
 
@@ -86,9 +86,10 @@ export class MapContainer extends Component {
             return marker;
           })
 
-          this.setState({markers, selectedPlace});
+          this.setState({markers, markerProps});
 
-}
+        }
+
   render() {
     return (
       <div>
@@ -110,9 +111,9 @@ export class MapContainer extends Component {
           aria-role="map"
           onClick={this.onClose}
         >
-          <Marker
-            onClick={this.onMarkerClick}
-            />
+        <Marker
+          onClick={this.onMarkerClick}
+          />
 
           <InfoWindow
               marker= {this.state.activeMarker}
@@ -121,9 +122,9 @@ export class MapContainer extends Component {
           >
 
             <div>
-              <h4> {this.state.selectedPlace && this.state.selectedPlace.name}</h4>
-                   {this.state.selectedPlace && this.state.selectedPlace.url ?
-                     (<a href={this.state.selectedPlace.url}>Click here for website</a>) : "website not found"}
+              <h4> {this.state.markerProps && this.state.markerProps.name}</h4>
+                   {this.state.markerProps && this.state.markerProps.url ?
+                     (<a href={this.state.markerProps.url}>Click here for website</a>) : "website not found"}
             </div>
           </InfoWindow>
           </Map>
