@@ -47,7 +47,7 @@ export class MapContainer extends Component {
     });
   }
 
-    onClose = props =>{
+    onClose = props => {
       if(this.state.showingInfoWindow) {
         this.setState({
           showingInfoWindow: false,
@@ -55,37 +55,40 @@ export class MapContainer extends Component {
         });
       }
 
-    let selectedPlace=[]
-    let markers = locations.map((location, key) => {
-      let sPlace ={
-        key: index,
-        index,
-        name:location.name,
-        placement: location.pos,
-        url: location.url
-      };
+    let selectedPlace=[];
+      let markers = locations.map((location, index) => {
+        let sPlace ={
+          key: index,
+          index,
+          name:location.name,
+          placement: location.pos,
+          url: location.url
+        };
 
-      selectedPlace.push(sPlace);
+        selectedPlace.push(sPlace);
 
-      let marker = ()=> new this.props.google.maps.Marker({
-        position: location.pos,
-        map:this.setState.map,
-        animation: google.maps.Animation.DROP
+        let marker = new this.props.google.maps.Marker({
+          position: location.pos,
+          map:this.setState.map,
+          animation: this.props.google.maps.Animation.DROP
+        });
 
-      });
-      marker.addListener('click', toggleBounce);
+        // marker.addListener('click', toggleBounce);
+        //
+        //  toggleBounce=() => {
+        //     if (marker.getAnimation() !== null) {
+        //       marker.setAnimation(null);
+        //     } else {
+        //       marker.setAnimation(google.maps.Animation.BOUNCE);
+        //     }
 
-       toggleBounce=() => {
-          if (marker.getAnimation() !== null) {
-            marker.setAnimation(null);
-          } else {
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-          }
 
+            return marker;
+          })
 
-      return marker;
-    }
+          this.setState({markers, selectedPlace});
 
+}
   render() {
     return (
       <div>
@@ -109,9 +112,6 @@ export class MapContainer extends Component {
         >
           <Marker
             onClick={this.onMarkerClick}
-            // name={'Weinberg Nature Center'}
-            // lat={ 40.9757}
-            // lng={ -73.7546}
             />
 
           <InfoWindow
@@ -120,7 +120,6 @@ export class MapContainer extends Component {
               onClose= {this.onClose}
           >
 
-          // <ParkList locations={locations}/>
             <div>
               <h4> {this.state.selectedPlace && this.state.selectedPlace.name}</h4>
                    {this.state.selectedPlace && this.state.selectedPlace.url ?
