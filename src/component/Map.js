@@ -19,8 +19,8 @@ export class MapContainer extends Component {
     markers: [],
     markerProps:[],
     showInfoWindow: false, // toggles between hide and show
-    activeMarker: {}, //shows active marker on click
-    selectedPlace: {},
+    activeMarker: null, //shows active marker on click
+    selectedPlace: null,
     all: locations
   }
 
@@ -29,11 +29,17 @@ export class MapContainer extends Component {
     this.upDateMarkers(this.props.locations);
   }
 
-  upDateMarkers = locations => {
+  upDateMarkers = (locations) => {
+    if(!locations)
+     return;
+     //remove markers present
     this.state.markers.map(marker=> marker.setMap(null))
   }
 
   onMarkerClick =(props,marker,e) =>{
+    //close any open InfoWindow
+    this.onClose();
+    //then set the state for new markers InfoWindow
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -48,37 +54,37 @@ export class MapContainer extends Component {
           activeMarker: null
         });
       }
+
+    let selectedPlace=[]
+    let markers = locations.map((location, key) => {
+      let sPlace ={
+        key: index,
+        index,
+        name:location.name,
+        placement: location.pos,
+        url: location.url
+      };
+
+      selectedPlace.push(sPlace);
+
+      let marker = ()=> new this.props.google.maps.Marker({
+        position: location.pos,
+        map:this.setState.map,
+        animation: google.maps.Animation.DROP
+
+      });
+      marker.addListener('click', toggleBounce);
+
+       toggleBounce=() => {
+          if (marker.getAnimation() !== null) {
+            marker.setAnimation(null);
+          } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+          }
+
+
+      return marker;
     }
-    // let markerProps=[]
-    // let markers = locations.map(location, key) => {
-    //   let mProps ={
-    //     key: key,
-    //     index:,
-    //     name:locations.name,
-    //     placement: locations.pos,
-    //     url: locations.url
-    //   };
-    //   markersProps.push(mProps);
-    //
-    //   let marker => new this.props.google.maps.Marker({
-    //     position: locations.pos,
-    //     map:this.setState.map,
-    //     animation: google.maps.Animation.DROP
-    //
-    //   });
-    //   marker.addListener('click', toggleBounce);
-    //    toggleBounce => () {
-    //       if (marker.getAnimation() !== null) {
-    //         marker.setAnimation(null);
-    //       } else {
-    //         marker.setAnimation(google.maps.Animation.BOUNCE);
-    //       }
-    //
-    //
-    //   return marker;
-    // }
-
-
 
   render() {
     return (
@@ -94,16 +100,18 @@ export class MapContainer extends Component {
             lat: 40.9757,
             lng: -73.7546
           }}
+          onReady={this.mapReady}
           icon= 'pin.png'
           className="mapBox"
           role ="application"
           aria-role="map"
+          onClick={this.onClose}
         >
           <Marker
             onClick={this.onMarkerClick}
-            name={'Weinberg Nature Center'}
-            lat={ 40.9757}
-            lng={ -73.7546}
+            // name={'Weinberg Nature Center'}
+            // lat={ 40.9757}
+            // lng={ -73.7546}
             />
 
           <InfoWindow
@@ -112,9 +120,11 @@ export class MapContainer extends Component {
               onClose= {this.onClose}
           >
 
-          <ParkList locations={locations}/>
+          // <ParkList locations={locations}/>
             <div>
-              <h4> {this.state.selectedPlace.name}</h4>
+              <h4> {this.state.selectedPlace && this.state.selectedPlace.name}</h4>
+                   {this.state.selectedPlace && this.state.selectedPlace.url ?
+                     (<a href={this.state.selectedPlace.url}>Click here for website</a>) : "website not found"}
             </div>
           </InfoWindow>
           </Map>
