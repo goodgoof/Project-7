@@ -17,10 +17,8 @@ class App extends Component {
   render() {
     return(
       <div>
-        <SideMenu />
         <MapContainer locations={this.state.all}/>
 
-        <ParkList locations={locations}/>
       </div>
     )
   }

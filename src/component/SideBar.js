@@ -33,7 +33,7 @@ export default class SideMenu extends Component {
   render(){
 
     return(
-      <Menu>
+
         <div className="sidemenu">
           <input
             type={"text"}
@@ -45,7 +45,7 @@ export default class SideMenu extends Component {
             // onChange={() => this.updateQuery}/>
           <ParkList />
         </div>
-      </Menu>
+    
     )
   }
 }
