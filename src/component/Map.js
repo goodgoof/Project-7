@@ -10,7 +10,8 @@ import "../App.css";
 const mapStyles = {
   height: '100%',
   width: '100%',
-  right: 0
+  position:'fixed'
+  // right: 0
 };
 
 export class MapContainer extends Component {
@@ -19,27 +20,75 @@ export class MapContainer extends Component {
     markers: [],
     markerProps:[],
     showInfoWindow: false, // toggles between hide and show
-    activeMarker: null, //shows active marker on click
-    selectedPlace: null, //activemarkerprops
+    activeMarker: {}, //shows active marker on click
+    selectedPlace: {}, //activemarkerprops
     all: locations
+  }
+
+
+  componentDidMount=() => {
   }
 
   mapReady =(props, map) =>{
     this.setState({map});
-    this.upDateMarkers(this.props.locations);
+    // this.upDateMarkers(this.props.locations);
   }
 
-  upDateMarkers = (locations) => {
-    if(!locations)
-     return;
-     //remove markers present
-    this.state.markers.forEach(marker=> marker.setMap(null))
-  }
+  // upDateMarkers = (locations) => {
+  //   if(!locations)
+  //    return;
+  //    //remove markers present
+  //   this.state.markers.forEach(marker=> marker.setMap(null))
+  //
+  //   let markerProps=[];
+  //     let markers = locations.map((location, index) => {
+  //       let mProps ={
+  //         key: index,
+  //         index,
+  //         name:location.name,
+  //         placement: location.pos,
+  //         url: location.url
+  //       };
+  //
+  //       markerProps.push(mProps);
+  //
+  //       let marker = new this.props.google.maps.Marker({
+  //         position: location.pos,
+  //         map:this.state.map,
+  //         animation: this.props.google.maps.Animation.DROP,
+  //       });
+  //
+  //       marker.addListener('click', () =>{
+  //         this.onMarkerClick(mProps, marker, null)
+  //         console.log(mProps)
+  //       });
+  //
+  //           return marker;
+  //         })
+  //
+  //         this.setState({markers, markerProps});
+  //
+  //       }
+
+        componentDidMount = () => {
+          let markers = this.props.locations.map((location, index) => {
+            const marker = {
+              key: index,
+              index,
+              name: location.name,
+              position: { lat: location.pos.lat, lng: location.pos.lng },
+              url: location.url
+            };
+            return marker;
+          });
+
+          this.setState({ markers });
+        };
 
   onMarkerClick =(props,marker,e) =>{
     //close any open InfoWindow
     this.onClose();
-    //then set the state for new markers InfoWindow
+    //then set the state for markers InfoWindow
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -54,47 +103,17 @@ export class MapContainer extends Component {
           activeMarker: null
         });
       }
-
-    let markerProps=[];
-      let markers = locations.map((location, index) => {
-        let mProps ={
-          key: index,
-          index,
-          name:location.name,
-          placement: location.pos,
-          url: location.url
-        };
-
-        markerProps.push(mProps);
-
-        let marker = new this.props.google.maps.Marker({
-          position: location.pos,
-          map:this.state.map,
-          animation: this.props.google.maps.Animation.DROP
-        });
-
-        // marker.addListener('click', toggleBounce);
-        //
-        //  toggleBounce=() => {
-        //     if (marker.getAnimation() !== null) {
-        //       marker.setAnimation(null);
-        //     } else {
-        //       marker.setAnimation(google.maps.Animation.BOUNCE);
-        //     }
-
-
-            return marker;
-          })
-
-          this.setState({markers, markerProps});
-
-        }
+    }
 
   render() {
     return (
       <div>
-        <header>
-          <h1 className="title"> Parks and Hiking Trails, Scarsdale NY </h1></header>
+      <header>
+          <h1 className="title"
+          // style={mapStyles.width}
+          > Parks and Hiking Trails, Scarsdale NY
+          </h1>
+      </header>
 
         <Map
           google={this.props.google}
@@ -109,11 +128,16 @@ export class MapContainer extends Component {
           className="mapBox"
           role ="application"
           aria-role="map"
-          onClick={this.onClose}
-        >
-        <Marker
-          onClick={this.onMarkerClick}
-          />
+          onClick={this.onClose}>
+
+          {this.state.markers.map(marker => (
+            <Marker
+              key={marker.index}
+              position={marker.position}
+              name={marker.name}
+              onClick={e => this.onMarkerClick(marker, e)}
+            />
+          ))}
 
           <InfoWindow
               marker= {this.state.activeMarker}
@@ -122,7 +146,7 @@ export class MapContainer extends Component {
           >
 
             <div>
-              <h4> {this.state.markerProps && this.state.markerProps.name}</h4>
+              <h4> {this.state.selectedPlace.name}</h4>
                    {this.state.markerProps && this.state.markerProps.url ?
                      (<a href={this.state.markerProps.url}>Click here for website</a>) : "website not found"}
             </div>

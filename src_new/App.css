@@ -21,7 +21,7 @@ body, .app {
   height: 100vh;
   width: 100vw;
   display: flex;
-  /* flex-flow: row nowrap; */
+  flex-flow: row nowrap;
 }
 
 .title {
@@ -31,9 +31,9 @@ body, .app {
   background-color: #c8f0b9;
 }
 
-/* .sidemenu {
+.sidemenu {
   width: 25%;
-} */
+}
 
 input#search {
   width: 100%;
@@ -42,7 +42,7 @@ input#search {
 }
 
 .mapBox {
-  width: 100%;
+  width: 75%;
 }
 
 li.location-list-item {
@@ -52,15 +52,23 @@ li.location-list-item {
   margin-top: 1rem;
   display: flex;
   align-items: center;
-  /* padding: .5rem; */
+  padding: .5rem;
   cursor: pointer;
-  /* background-color:#c8f0b9;
-  color:  #212320; */
+  background-color:#c8f0b9;
+  color:  #212320;
 }
 
 .flex-container {
   display: flex;
   width: 100%;
+}
+.item-1 {
+  width: 20%;
+  order: 2
+}
+.item-2 {
+  width: 80%;
+  order: 1;
 }
 
 ul.menu {

@@ -1,0 +1,121 @@
+[{
+    "name": "Loradella pizza",
+    "address": "126 River Dr S,",
+    "city": "jersey City",
+    "state": "New jersey",
+    "url": "http://loradellasfamilypizzeria.com/",
+    "pos": {
+      "lat": 40.7178,
+      "lng": -74.0431
+    }
+  },
+
+  {
+    "name": "Fire and Oak",
+    "address": "485 Washington Boulevard",
+    "city": "jersey City",
+    "state": "New jersey",
+    "url": "https://www.fireandoak.com/jerseycity/jerseycity.html",
+    "pos": {
+      "lat": 40.7178,
+      "lng": -74.0431
+    }
+  },
+
+  {
+    "name": "Razza Pizza",
+    "address": "275 Grove St",
+    "city": "jersey City",
+    "state": "New jersey",
+    "url": "http://loradellasfamilypizzeria.com/",
+    "pos": {
+      "lat": 40.7178,
+      "lng": -74.0431
+    }
+  },
+
+  {
+    "name": "Renatos Pizza masters",
+    "address": "278 Central Ave",
+    "city": "jersey City",
+    "state": "New jersey",
+    "url": "https://www.pizzamastersjc.com/",
+    "pos": {
+      "lat": 40.7178,
+      "lng": -74.0431
+    }
+  },
+
+  {
+    "name": "krispy Pizza",
+    "address": "33 Hudson St",
+    "city": "jersey City",
+    "state": "New jersey",
+    "url": "http://krispypizza.com/",
+    "pos": {
+      "lat": 40.7178,
+      "lng": -74.0431
+    }
+  },
+  {
+    "name": " Greenburgh Nature Center",
+    "address": "99 Dromore Rd",
+    "city": "Scarsdale",
+    "state": "New York",
+    "url": "https://greenburghnaturecenter.org/",
+    "pos": {
+      "lat": 40.7178,
+      "lng": -74.0431
+    }
+  },
+
+  {
+    "name": " Ridge Road Park",
+    "address": "287 Ridge Rd",
+    "city": "Hartsdale",
+    "state": "New York",
+    "url": "https://parks.westchestergov.com/ridge-road-park",
+    "pos": {
+      "lat": 40.7178,
+      "lng": -74.0431
+    }
+
+  },
+
+  {
+    "name": " Hart's Brook Park & Preserve",
+    "address": "156 Ridge Rd",
+    "city": "Hartsdale",
+    "state": "New York",
+    "url": "https://parks.westchestergov.com/ridge-road-park",
+    "pos": {
+      "lat": 40.7178,
+      "lng": -74.0431
+    }
+  },
+
+  {
+    "name": " Bronx river Park",
+    "address": "2 Bronx River Pkwy",
+    "city": "Scarsdale",
+    "state": "New York",
+    "url": "https://parks.westchestergov.com/ridge-road-park",
+    "pos": {
+      "lat": 40.7178,
+      "lng": -74.0431
+    }
+  },
+
+  {
+    "name": "Weinberg Nature Center",
+    "address": "455 Mamaroneck Rd",
+    "city": "Scarsdale",
+    "state": "New York",
+    "url": "https://parks.westchestergov.com/ridge-road-park",
+    "pos": {
+      "lat": 40.7178,
+      "lng": -74.0431
+    }
+  }
+
+]

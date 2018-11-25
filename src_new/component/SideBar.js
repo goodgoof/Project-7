@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import {bubble as Menu} from 'react-burger-menu';
+import {slide as Menu} from 'react-burger-menu';
 import ParkList from './ParkList.js'
-import locations from '../data/locations.json';
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 
@@ -34,13 +33,19 @@ export default class SideMenu extends Component {
   render(){
 
     return(
-      <Menu>
+
         <div className="sidemenu">
-
-          <ParkList locations={locations}/>
+          <input
+            type={"text"}
+            value={this.state.query}
+            is ={'search'}
+            aria-label={"Search Parks"}
+            placeholder="Search Parks"
+            />
+            // onChange={() => this.updateQuery}/>
+          <ParkList />
         </div>
-        </Menu>
-
+    
     )
   }
 }

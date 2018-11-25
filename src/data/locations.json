@@ -82,6 +82,30 @@
 			"lat": 40.9757,
 			"lng": -73.7546
 		}
-	}
+	},
+
+  {
+    "name": "Saxon Woods Park",
+    "address": "1800 Mamaroneck Avenue",
+    "city": "White Plains",
+    "state": "New York",
+    "url": "https://parks.westchestergov.com/saxon-woods-park",
+    "pos": {
+      "lat": 40.9867,
+      "lng": -73.7452
+    }
+  },
+
+  {
+    "name": "Harbor Island Park",
+    "address": "123 Mamaroneck Avenue",
+    "city": "Mamaroneck",
+    "state": "New York",
+    "url": "https://www.village.mamaroneck.ny.us/Pages/MamaroneckNY_Recreation/index",
+    "pos": {
+      "lat": 40.9757,
+      "lng": -73.7546
+    }
+  }
 
 ]

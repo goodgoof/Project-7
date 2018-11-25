@@ -16,13 +16,11 @@ class App extends Component {
 
   render() {
     return(
-      <div>
+      <div className="App" >
         <MapContainer
             locations={this.state.all}
-            lat={this.state.initialCenter.lat}
-            lng={this.state.initialCenter.lng}
-            zoom={this.state.zoom}/>
-
+            />
+        <SideMenu />
       </div>
     )
   }
