@@ -21,19 +21,21 @@ body, .app {
   height: 100vh;
   width: 100vw;
   display: flex;
-  /* flex-flow: row nowrap; */
+  flex-flow: row nowrap;
 }
 
-.title {
+header {
+  width: 100%;
+  height: 50px;
+}
+
+h1.title {
   padding: 30px;
-  text-align: center;
+  text-align: right;
   color: #212320;
   background-color: #c8f0b9;
 }
 
-/* .sidemenu {
-  width: 25%;
-} */
 
 input#search {
   width: 100%;
@@ -43,6 +45,8 @@ input#search {
 
 .mapBox {
   width: 100%;
+  top: 120px;
+  /* height: 80px; */
 }
 
 li.location-list-item {

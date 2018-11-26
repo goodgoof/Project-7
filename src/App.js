@@ -17,10 +17,10 @@ class App extends Component {
   render() {
     return(
       <div className="App" >
+        <SideMenu />
         <MapContainer
             locations={this.state.all}
             />
-        <SideMenu />
       </div>
     )
   }

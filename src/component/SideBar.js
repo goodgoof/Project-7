@@ -16,28 +16,22 @@ export default class SideMenu extends Component {
 
   }
 
-  // handleChange = e => {
-  //   this.setState({query: e.target.value});
-  //   const markers = this.props.locations.map(location => {
-  //     const isWatched = location.name.toLowerCase().includes(e.target.value.toLowerCase());
-  //     const marker = this.props.markers.find(marker => marker.id === location.id);
-  //     if(isWatched){
-  //       marker.isVisible =true;
-  //     } else{
-  //       marker.isVisible= false;
-  //     }
-  //       return marker
-  //   })
-  //   this.props.updateSuperState({markers})
-  // };
+  listItemClick =location => {
+       const marker=this.state.markers.find(marker => marker.name === location.name);
+       this.onMarkerClick(marker)
+
+  }
+
+
 
   render(){
 
     return(
       <Menu>
         <div className="sidemenu">
-
-          <ParkList locations={locations}/>
+          <ParkList
+            locations={locations}
+            listitemClick= {this.props.listItemClick}/>
         </div>
         </Menu>
 
