@@ -20,7 +20,7 @@ import escapeRegExp from 'escape-string-regexp';
 
    listItemClick =(location) => {
     const marker=this.props.markers.find(marker => marker.id === location.id);
-    this.props.handleMarkerClick(marker)
+    this.props.onMarkerClick(marker)
 
   }
    render() {
