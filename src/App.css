@@ -33,7 +33,7 @@ h1.title {
   padding: 30px;
   text-align: right;
   color: #212320;
-  background-color: #c8f0b9;
+  background-color: #ea604f;
 }
 
 
@@ -83,7 +83,7 @@ ul.menu {
  } */
 /* } */
 
-@media only screen and (max-width: 425px) {
+/* @media only screen and (max-width: 425px) {
   .App {
     display: flex;
     flex-direction: column;
@@ -105,7 +105,7 @@ ul.menu {
   }
 
 
-}
+} */
 
 .bm-burger-button {
   position: fixed;
