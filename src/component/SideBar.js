@@ -7,7 +7,7 @@ import sortBy from 'sort-by'
 
 export default class SideMenu extends Component {
   state ={
-    query: "",
+    // query: "",
     locations: []
   }
 

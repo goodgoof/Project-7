@@ -88,7 +88,11 @@ export class MapContainer extends Component {
 
     }
 
-
+    getParkInfo =(props, data) => {
+      return data.response.venues
+      .filter(item => item.name.includes(props.name) || props.name.includes(item.name))
+    }
+    
   onMarkerClick =(props,marker,e) =>{
     //close any open InfoWindow
     this.onClose();
