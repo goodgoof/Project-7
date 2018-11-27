@@ -6,6 +6,7 @@ import escapeRegExp from 'escape-string-regexp';
 
  class ParkList extends Component {
    state ={
+     open: false,
      query: ""
    }
 

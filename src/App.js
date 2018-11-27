@@ -7,6 +7,7 @@ import SideMenu from './component/SideBar.js'
 
 class App extends Component {
   state ={
+    open: false,
     initialCenter: {lat: 41.0050977, lng: -73.7845768 },
     zoom: 12,
     all:locations
@@ -40,6 +41,11 @@ filterQuery = e =>{
    });
 
 }
+
+updateQuery =(newQuery) => {
+  {this.setState({query: newQuery.trim()})}
+}
+
   listItemClick = location => {
     console.log('Where is the location', location)
    // const marker=this.state.markers.find(marker => marker.name === location.name);
@@ -54,7 +60,8 @@ filterQuery = e =>{
       <div className="App" >
         <SideMenu locations = {this.state.fluidLocations}
            handleListitemClick = {this.filterQuery}
-           listItemHandler={this.listItemClick}/>
+           listItemHandler={this.listItemClick}
+           />
         <MapContainer
             locations={this.state.all}
             />

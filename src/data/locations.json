@@ -8,7 +8,9 @@
 		"pos": {
 			"lat": 41.0052,
 			"lng": -73.8068
-		}
+		},
+    "fourSquareVenuesId": "4bae22baf964a52095883be3",
+    "fourSquareVenuesName": "Greenburgh Nature Center"
 	},
 
 	{
@@ -20,7 +22,9 @@
 		"pos": {
 			"lat": 41.075976,
 			"lng": -73.7524
-		}
+		},
+    "fourSquarevenuesId": "4c5dbb256147be9a61eb9209",
+    "fourSquareVenuesName": "Cranberry Lake Preserve"
 	},
 
 	{
@@ -32,7 +36,9 @@
 		"pos": {
 			"lat": 41.26843,
 			"lng": -73.90958
-		}
+		},
+    "fourSquarevenuesId": "4b5c6863f964a520652e29e3",
+    "fourSquareVenuesName":"blue mountain reservation"
 	},
 
 	{
@@ -44,7 +50,9 @@
 		"pos": {
 			"lat": 41.0217,
 			"lng": -73.8131
-		}
+		},
+    "fourSquarevenuesId":"4bdd9c89aebd2d7fdb69af51",
+    "fourSquareVenuesName":"Ridge Road Park"
 
 	},
 

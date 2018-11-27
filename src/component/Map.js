@@ -97,34 +97,39 @@ export class MapContainer extends Component {
     //close any open InfoWindow
     this.onClose();
 
-  let squareApi = 'https://api.foursquare.com/v2/venues/search?client_id=${client_id}&client_secret=${client_secret}&v=${version}&ll${this.props.initialCenter}'
-    let headers = new Headers();
-    let request = new Request(squareApi, {
-      method: 'GET',
-      headers
-    })
-
-    let selectedPlace;
-    fetch(request)
-      .then(response => response.json())
-      .then(result => {
-    //  need  the park/location address from foursquare apiKey
-      let park = this.getParkInfo(props, result);
-      selectedPlace ={ ...props, foursquare: park[0] }
-    })
-
-    if(selectedPlace.foursquare) {
-      let squareApi = 'https://api.foursquare.com/v2/venues/${park[0].name/photos?client_id=${client_id}&client_secret=${client_secret}&v=${version}&ll${this.props.initialCenter}'
-      fetch(squareApi)
-        .then(response => response.json())
-        .then(result => {
-          selectedPlace ={
-            ...selectedPlace,
-            images: result.response.photos
-          };
-        })
-
-    }
+  // let squareApi = 'https://api.foursquare.com/v2/venues/search?client_id=${client_id}&client_secret=${client_secret}&v=${version}&query=parks&ll${this.props.initialCenter}'
+  //   let headers = new Headers();
+  //   let request = new Request(squareApi, {
+  //     method: 'GET',
+  //     headers
+  //   });
+  //
+  //   let selectedPlace;
+  //   fetch(request)
+  //     .then(response => response.json())
+  //     .then(result => {
+  //   //  need  the park/location address from foursquare apiKey
+  //     let park = this.getParkInfo(props, result);
+  //     selectedPlace ={ ...props, foursquare: park[0] }
+  //   };
+  //    if(selectedPlace.foursquare) {
+  //     let squareApi = 'https://api.foursquare.com/v2/venues/VENUE_ID/photos?client_id=${client_id}&client_secret=${client_secret}&v=${version}&ll${this.props.initialCenter}'
+  //     fetch(squareApi)
+  //       .then(response => response.json())
+  //       .then(result => {
+  //         selectedPlace ={
+  //           ...selectedPlace,
+  //           images: result.response.photos
+  //         };
+  //         if (this.state.selectedPlace)
+  //         this.state.selectedPlace.setAnimation(null);
+  //         this.setState({showingInfoWindow: true, activemarker: marker, selectedPlace})
+  //       } else {
+  //         this.setState({showingInfoWindow:true, activemarker: marker, selectedPlace})
+  //       }
+  //       }).catch(error => alert("Sorry, the page could not load"));
+  //
+  //   }
     //then set the state for markers InfoWindow
     this.setState({
       selectedPlace: props,
