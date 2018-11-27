@@ -29,7 +29,7 @@ export class MapContainer extends Component {
     markerProps:[],
     showInfoWindow: false, // toggles between hide and show
     activeMarker: {}, //shows active marker on click
-    selectedPlace: {}, //activemarkerplace
+    selectedPlace: {}, //activemarkerplaceprops
     all: locations
   }
 
@@ -49,7 +49,6 @@ export class MapContainer extends Component {
       this.state.markers.forEach(marker=> marker.setMap(null))
 
       //adding foursquare data
-
 
       let markerProps=[];
         let markers = locations.map((location, index) => {
@@ -110,10 +109,22 @@ export class MapContainer extends Component {
       .then(response => response.json())
       .then(result => {
     //  need  the park/location address from foursquare apiKey
-
       let park = this.getParkInfo(props, result);
       selectedPlace ={ ...props, foursquare: park[0] }
     })
+
+    if(selectedPlace.foursquare) {
+      let squareApi = 'https://api.foursquare.com/v2/venues/${park[0].name/photos?client_id=${client_id}&client_secret=${client_secret}&v=${version}&ll${this.props.initialCenter}'
+      fetch(squareApi)
+        .then(response => response.json())
+        .then(result => {
+          selectedPlace ={
+            ...selectedPlace,
+            images: result.response.photos
+          };
+        })
+
+    }
     //then set the state for markers InfoWindow
     this.setState({
       selectedPlace: props,

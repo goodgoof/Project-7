@@ -7,8 +7,6 @@ import SideMenu from './component/SideBar.js'
 
 class App extends Component {
   state ={
-    // parks: [],
-    // markers:[],
     initialCenter: {lat: 41.0050977, lng: -73.7845768 },
     zoom: 12,
     all:locations
@@ -26,7 +24,7 @@ class App extends Component {
 
 
 filterQuery = e =>{
-  console.log(e.target.valuef)
+  console.log(e.target.value)
   const query = e.target.value;
   const tempArray =[];
   if(query === "") {
