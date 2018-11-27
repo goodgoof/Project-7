@@ -31,7 +31,7 @@ export default class SideMenu extends Component {
         <div className="sidemenu">
           <ParkList
             locations={locations}
-            listitemClick= {this.props.listItemClick}/>
+            onClick= {this.props.filterQuery}/>
         </div>
         </Menu>
 

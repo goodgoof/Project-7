@@ -39,7 +39,8 @@ filterQuery = e =>{
 
 }
   listItemClick =location => {
-   const marker=this.state.markers.find(marker => marker.id === location.id);
+   const marker=this.state.markers.find(marker => marker.name === location.name);
+   this.props.filterQuery()
    this.props.onMarkerClick(marker)
 //
  }
@@ -49,7 +50,7 @@ filterQuery = e =>{
     return(
       <div className="App" >
         <SideMenu locations = {this.state.fluidLocations}
-           handleListitemClick = {this.listItemClick}/>
+           handleListitemClick = {this.filterQuery}/>
         <MapContainer
             locations={this.state.all}
             />

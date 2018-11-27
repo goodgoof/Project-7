@@ -13,7 +13,7 @@ const keys = {
     };
 
     window.gm_authFailure=()=>{
-         alert('The site failed to load. Please try again.')
+         alert('The site failed to load. Please try again later.')
       };
 
 
@@ -92,7 +92,7 @@ export class MapContainer extends Component {
       return data.response.venues
       .filter(item => item.name.includes(props.name) || props.name.includes(item.name))
     }
-    
+
   onMarkerClick =(props,marker,e) =>{
     //close any open InfoWindow
     this.onClose();
@@ -127,7 +127,6 @@ export class MapContainer extends Component {
             lng: -73.7546
           }}
           onReady={this.mapReady}
-          icon= 'pin.png'
           className="mapBox"
           role ="application"
           aria-role="map"
@@ -222,9 +221,9 @@ export class MapContainer extends Component {
                 onClose= {this.onClose}>
 
               <div>
-                <h4> {this.state.selectedPlace.name}</h4>
-                     {this.state.selectedPlace.url && this.state.markerProps.url ?
-                       (<a href={this.state.markerProps.url}>Click here for website</a>) : "website not found"}
+                <h4> {this.state.selectedPlace && this.state.selectedPlace.name}</h4>
+                     {this.state.selectedPlace && this.state.selectedPlace.url ?
+                       (<a href={this.state.selectedPlace.url}>Click here for website</a>) : "website not found"}
               </div>
             </InfoWindow>
           </Map>
