@@ -7,8 +7,8 @@ import SideMenu from './component/SideBar.js'
 
 class App extends Component {
   state ={
-    parks: [],
-    markers:[],
+    // parks: [],
+    // markers:[],
     initialCenter: {lat: 41.0050977, lng: -73.7845768 },
     zoom: 12,
     all:locations

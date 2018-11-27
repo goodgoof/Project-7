@@ -6,11 +6,9 @@ import ParkList from './ParkList.js'
 import "../App.css";
 // import Styles from './mapStyles.js'
 
-const keys = {
-      client_id: "YVZELKQDJWG1CRDPGZNFU4YJAYSDNIRKTPQJIERFCGX3TFFI",
-      client_secret: "ONIWQ5C41NUEZILHWRPZD0EQRDTILKOR5R4YNEWBZISRGIFH",
-      v: "20181108"
-    };
+  const  client_id = "YVZELKQDJWG1CRDPGZNFU4YJAYSDNIRKTPQJIERFCGX3TFFI"
+  const client_secret= "ONIWQ5C41NUEZILHWRPZD0EQRDTILKOR5R4YNEWBZISRGIFH"
+  const version= "20181108"
 
     window.gm_authFailure=()=>{
          alert('The site failed to load. Please try again later.')
@@ -31,7 +29,7 @@ export class MapContainer extends Component {
     markerProps:[],
     showInfoWindow: false, // toggles between hide and show
     activeMarker: {}, //shows active marker on click
-    selectedPlace: {}, //activemarkerprops
+    selectedPlace: {}, //activemarkerplace
     all: locations
   }
 
@@ -52,7 +50,6 @@ export class MapContainer extends Component {
 
       //adding foursquare data
 
-      let url = 'https://api.foursquare.com/v2/photos/PHOTO_ID'
 
       let markerProps=[];
         let markers = locations.map((location, index) => {
@@ -100,6 +97,23 @@ export class MapContainer extends Component {
   onMarkerClick =(props,marker,e) =>{
     //close any open InfoWindow
     this.onClose();
+
+  let squareApi = 'https://api.foursquare.com/v2/venues/search?client_id=${client_id}&client_secret=${client_secret}&v=${version}&ll${this.props.initialCenter}'
+    let headers = new Headers();
+    let request = new Request(squareApi, {
+      method: 'GET',
+      headers
+    })
+
+    let selectedPlace;
+    fetch(request)
+      .then(response => response.json())
+      .then(result => {
+    //  need  the park/location address from foursquare apiKey
+
+      let park = this.getParkInfo(props, result);
+      selectedPlace ={ ...props, foursquare: park[0] }
+    })
     //then set the state for markers InfoWindow
     this.setState({
       selectedPlace: props,
@@ -119,6 +133,7 @@ export class MapContainer extends Component {
     }
 
   render() {
+
     return (
       <div>
 
