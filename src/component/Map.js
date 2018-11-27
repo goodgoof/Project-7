@@ -50,6 +50,10 @@ export class MapContainer extends Component {
        //remove markers present
       this.state.markers.forEach(marker=> marker.setMap(null))
 
+      //adding foursquare data
+
+      let url = 'https://api.foursquare.com/v2/photos/PHOTO_ID'
+
       let markerProps=[];
         let markers = locations.map((location, index) => {
           let mProps ={

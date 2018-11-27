@@ -13,6 +13,9 @@ class App extends Component {
     zoom: 12,
     all:locations
   }
+  componentDidMount() {
+    console.log(this.props)
+  }
 
   componentWillMount=() =>{
     this.setState({
@@ -23,6 +26,7 @@ class App extends Component {
 
 
 filterQuery = e =>{
+  console.log(e.target.valuef)
   const query = e.target.value;
   const tempArray =[];
   if(query === "") {
@@ -38,10 +42,11 @@ filterQuery = e =>{
    });
 
 }
-  listItemClick =location => {
-   const marker=this.state.markers.find(marker => marker.name === location.name);
-   this.props.filterQuery()
-   this.props.onMarkerClick(marker)
+  listItemClick = location => {
+    console.log('Where is the location', location)
+   // const marker=this.state.markers.find(marker => marker.name === location.name);
+   // this.props.filterQuery()
+   // this.props.onMarkerClick(marker)
 //
  }
 
@@ -50,7 +55,8 @@ filterQuery = e =>{
     return(
       <div className="App" >
         <SideMenu locations = {this.state.fluidLocations}
-           handleListitemClick = {this.filterQuery}/>
+           handleListitemClick = {this.filterQuery}
+           listItemHandler={this.listItemClick}/>
         <MapContainer
             locations={this.state.all}
             />

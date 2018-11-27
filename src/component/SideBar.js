@@ -11,16 +11,21 @@ export default class SideMenu extends Component {
     locations: []
   }
 
+  componentDidMount() {
+    console.log(this.props)
+  }
+
   updateQuery =(newQuery) => {
     {this.setState({query: newQuery.trim()})}
 
   }
 
-  listItemClick =location => {
-       const marker=this.state.markers.find(marker => marker.name === location.name);
-       this.onMarkerClick(marker)
-
-  }
+  // listItemClick =location => {
+  //   console.log(location)
+  //      const marker=this.state.markers.find(marker => marker.name === location.name);
+  //      this.onMarkerClick(marker)
+  //
+  // }
 
 
 
@@ -30,6 +35,7 @@ export default class SideMenu extends Component {
       <Menu>
         <div className="sidemenu">
           <ParkList
+            listItemHandler={this.props.listItemHandler}
             locations={locations}
             onClick= {this.props.filterQuery}/>
         </div>

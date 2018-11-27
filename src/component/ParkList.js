@@ -18,6 +18,10 @@ import escapeRegExp from 'escape-string-regexp';
      this.setState({query: ""})
    }
 
+   handleListitemClick(name) {
+     this.props.listItemHandler(name)
+   }
+
   //  listItemClick =(location) => {
   //   const marker=this.props.markers.find(marker => marker.name === location.name);
   //   this.props.onMarkerClick(marker)
@@ -65,7 +69,7 @@ import escapeRegExp from 'escape-string-regexp';
                   key ={location.name}
                   className="location-list-item"
                   tabIndex="0"
-                  onClick={this.props.filterQuery}>
+                  onClick={(e) => this.handleListitemClick(location.name)}>
                  <div className="location-details">
                    <p>{location.name}</p>
                  </div>
