@@ -16,7 +16,7 @@ class App extends Component {
 
   listItemClick =location => {
    const marker=this.state.markers.find(marker => marker.id === location.id);
-   this.props.handleMarkerClick(marker)
+   this.props.onMarkerClick(marker)
 //
  }
 

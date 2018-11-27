@@ -12,6 +12,11 @@ const keys = {
       v: "20181108"
     };
 
+    window.gm_authFailure=()=>{
+         alert('The site failed to load. Please try again.')
+      };
+
+
 const mapStyles = {
   height: '100%',
   width: '100%',
@@ -214,7 +219,7 @@ export class MapContainer extends Component {
 
               <div>
                 <h4> {this.state.selectedPlace.name}</h4>
-                     {this.state.markerProps && this.state.markerProps.url ?
+                     {this.state.selectedPlace.url && this.state.markerProps.url ?
                        (<a href={this.state.markerProps.url}>Click here for website</a>) : "website not found"}
               </div>
             </InfoWindow>
