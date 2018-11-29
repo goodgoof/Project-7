@@ -1,6 +1,6 @@
 import React from "react";
 import { Map, GoogleApiWrapper, InfoWindow } from "google-maps-react";
-import { MapStyle, MapDivStyle } from "./MapStyles.js";
+import { MapStyle, MapDivStyle } from "./mapStyles.js";
 import "../App.css";
 
 window.gm_authFailure = () => {
