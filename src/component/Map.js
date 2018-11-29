@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Map, GoogleApiWrapper, InfoWindow } from "google-maps-react";
 import { MapStyle, MapDivStyle } from "./MapStyles.js";
 import "../App.css";

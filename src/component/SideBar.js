@@ -1,8 +1,6 @@
 import React from "react";
 import { bubble as Menu } from "react-burger-menu";
 import ParkList from "./ParkList.js";
-import Header from "./Header.js";
-
 
 const SideMenu = ({
   handleListitemClick,

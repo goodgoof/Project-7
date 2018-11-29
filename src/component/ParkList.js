@@ -9,7 +9,7 @@ const ParkList =(props) => {
             type="text"
             placeholder="Search Parks"
             value={props.query}
-            onChange={event => this.props.filterQuery(event)}
+            onChange={event => props.filterQuery(event)}
           />
         </div>
 
@@ -18,7 +18,7 @@ const ParkList =(props) => {
             Showing {props.fluidLocations.length} of{" "}
             {props.staticLocations.length}{" "}
           </span>
-          <button onClick={this.resetQuery} style={{}} className="showAll">
+          <button onClick={props.resetQuery} style={{}} className="showAll">
             {" "}
             Show all{" "}
           </button>
