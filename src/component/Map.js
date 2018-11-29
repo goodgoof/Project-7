@@ -2,7 +2,6 @@ import React from "react";
 import { Map, GoogleApiWrapper, InfoWindow } from "google-maps-react";
 import { MapStyle, MapDivStyle } from "./MapStyles.js";
 import "../App.css";
-import ErrorHelp from "./ErrorHelp.js";
 
 window.gm_authFailure = () => {
   alert("The site failed to load. Please try again later.");
@@ -45,5 +44,5 @@ const MapContainer =(props) => {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyBFLMyrvoPSmsicmg9MA8nc3OHE2-HIQbQ",
-  LoadingContainer: ErrorHelp })(MapContainer);
+  apiKey: "AIzaSyBFLMyrvoPSmsicmg9MA8nc3OHE2-HIQbQ"
+   })(MapContainer);

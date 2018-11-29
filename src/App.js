@@ -161,24 +161,24 @@ class App extends Component {
     this.state.staticLocations.sort(sortBy('name'))
     return (
       <div className="App">
-          <Header />
-          <SideMenu
+           <Header />
+            <SideMenu
+              fluidLocations={this.state.fluidLocations}
+              staticLocations={this.state.staticLocations}
+              filterQuery={this.filterQuery}
+              handleListitemClick={this.handleListitemClick}
+              query={this.state.query}
+            />
+           <MapContainer
+            zoom={this.state.zoom}
+            initialCenter={this.state.initialCenter}
             fluidLocations={this.state.fluidLocations}
-            staticLocations={this.state.staticLocations}
-            filterQuery={this.filterQuery}
-            handleListitemClick={this.handleListitemClick}
-            query={this.state.query}
+            mapReady={this.mapReady}
+            activeMarker={this.state.activeMarker}
+            selectedPlace={this.state.selectedPlace}
+            showingInfoWindow={this.state.showingInfoWindow}
+            onClose={this.onClose}
           />
-        <MapContainer
-          zoom={this.state.zoom}
-          initialCenter={this.state.initialCenter}
-          fluidLocations={this.state.fluidLocations}
-          mapReady={this.mapReady}
-          activeMarker={this.state.activeMarker}
-          selectedPlace={this.state.selectedPlace}
-          showingInfoWindow={this.state.showingInfoWindow}
-          onClose={this.onClose}
-        />
       </div>
     );
   }
