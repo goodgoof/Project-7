@@ -3,6 +3,7 @@ import MapContainer from "./component/Map.js";
 import axios from "axios";
 import SideMenu from "./component/SideBar.js";
 import Header from "./component/Header.js";
+import sortBy from 'sort-by';
 
 class App extends Component {
   state = {
@@ -19,6 +20,7 @@ class App extends Component {
     activeMarker: {},
     selectedPlace: {}
   };
+
   //app loads MyJson api's response to state. code snippet by project coach Jason Michael White and Doug Brown on request to fix errors.
   componentDidMount = () => {
     axios.get("https://api.myjson.com/bins/1397ne").then(res => {
@@ -142,6 +144,11 @@ class App extends Component {
   updateQuery = newQuery => {
     this.setState({ query: newQuery.trim() });
   };
+
+  resetQuery = () => {
+     this.setState({query: ""})
+   };
+
   // to open marker based on listitem click
   handleListitemClick = location => {
     const marker = this.state.markers.find(
@@ -151,6 +158,7 @@ class App extends Component {
   };
 
   render() {
+    this.state.staticLocations.sort(sortBy('name'))
     return (
       <div className="App">
           <Header />
