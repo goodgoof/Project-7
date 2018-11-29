@@ -22,7 +22,7 @@ class App extends Component {
   };
 
   //app loads MyJson api's response to state. code snippet by project coach Jason Michael White and Doug Brown on request to fix errors.
-  componentDidMount = () => {
+  componentWillMount = () => {
     axios.get("https://api.myjson.com/bins/1397ne").then(res => {
       const locations = [...res.data];
       this.setState({
